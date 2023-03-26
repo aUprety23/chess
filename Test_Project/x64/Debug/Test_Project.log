@@ -1,0 +1,32 @@
+﻿  Game.cpp
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(107,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(108,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(136,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(137,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(366,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(366,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Test_Project.vcxproj -> C:\Users\abhis\source\repos\Test_Project\x64\Debug\Test_Project.exe
