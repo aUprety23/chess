@@ -13,10 +13,12 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         select->isAttacker(false);
     }
 
+
+
     //movement of bishop
-    if (bishop_BlackB->currentPosition == source_position)
+    if (bishop_BlackB->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true && (turn % 2 != 0))
     {
-        if (bishop_BlackB->isLegal(destination_posititon) && BishopPathObstructed(source_position, destination_posititon) !=true)
+        if (bishop_BlackB->isLegal(destination_posititon))
         {
             bishop_BlackB->move(destination_posititon);
             bishop_BlackB->currentPosition = destination_posititon;
@@ -25,7 +27,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (bishop_BlackW->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true)
+    else if (bishop_BlackW->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true && (turn % 2 != 0))
     {
         if (bishop_BlackW->isLegal(destination_posititon))
         {
@@ -36,7 +38,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (bishop_WhiteB->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) !=true)
+    else if (bishop_WhiteB->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) !=true && (turn % 2 == 0))
     {
         if (bishop_WhiteB->isLegal(destination_posititon))
         {
@@ -48,7 +50,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (bishop_WhiteW->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon)!=true)
+    else if (bishop_WhiteW->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon)!=true && (turn % 2 == 0))
     {
         if (bishop_WhiteW->isLegal(destination_posititon))
         {
@@ -59,8 +61,10 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
+
+
     //movement of knight
-    else if (knight_BlackB->currentPosition == source_position)
+    else if (knight_BlackB->currentPosition == source_position && (turn % 2 != 0))
     {
         if (knight_BlackB->isLegal(destination_posititon))
         {
@@ -71,7 +75,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (knight_BlackW->currentPosition == source_position)
+    else if (knight_BlackW->currentPosition == source_position && (turn % 2 != 0))
     {
         if (knight_BlackW->isLegal(destination_posititon))
         {
@@ -82,7 +86,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (knight_WhiteB->currentPosition == source_position)
+    else if (knight_WhiteB->currentPosition == source_position && (turn % 2 == 0))
     {
         if (knight_WhiteB->isLegal(destination_posititon))
         {
@@ -93,7 +97,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (knight_WhiteW->currentPosition == source_position)
+    else if (knight_WhiteW->currentPosition == source_position && (turn % 2 == 0))
     {
         if (knight_WhiteW->isLegal(destination_posititon))
         {
@@ -104,8 +108,10 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
+
+
     //movment of rook
-    else if (rook_BlackB->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true)
+    else if (rook_BlackB->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true && (turn % 2 != 0))
     {
         if (rook_BlackB->isLegal(destination_posititon))
         {
@@ -116,54 +122,56 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (rook_BlackW->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true)
+    else if (rook_BlackW->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true && (turn % 2 != 0))
     {
         if (rook_BlackW->isLegal(destination_posititon))
         {
             rook_BlackW->move(destination_posititon);
             rook_BlackW->currentPosition = destination_posititon;
-            knight_BlackW->isAttacker(true);
+            rook_BlackW->isAttacker(true);
             return true;
         }
     }
 
-    else if (rook_WhiteB->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true)
+    else if (rook_WhiteB->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true && (turn % 2 == 0))
     {
         if (rook_WhiteB->isLegal(destination_posititon))
         {
 
             rook_WhiteB->move(destination_posititon);
             rook_WhiteB->currentPosition = destination_posititon;
-            knight_WhiteB->isAttacker(true);
+            rook_WhiteB->isAttacker(true);
             return true;
         }
     }
 
-    else if (rook_WhiteW->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true)
+    else if (rook_WhiteW->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true && (turn % 2 == 0))
     {
         if (rook_WhiteW->isLegal(destination_posititon))
         {
             rook_WhiteW->move(destination_posititon);
             rook_WhiteW->currentPosition = destination_posititon;
-            knight_WhiteW->isAttacker(true);
+            rook_WhiteW->isAttacker(true);
             return true;
         }
     }
+
+
 
     //movement of queen
 
-     if (queen_BlackB->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true)
-    {
-        if (queen_BlackB->isLegal(destination_posititon) && (abs(source_position.x - destination_posititon.x) == abs(source_position.y - destination_posititon.y)))
-        {
-            queen_BlackB->moveDiagonally(destination_posititon);
-            queen_BlackB->currentPosition = destination_posititon;
-            queen_BlackB->isAttacker(true);
-            return true;
-        }
-    }
+     if (queen_BlackB->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true && (turn % 2 != 0))
+     {
+         if (queen_BlackB->isLegal(destination_posititon) && (abs(source_position.x - destination_posititon.x) == abs(source_position.y - destination_posititon.y)))
+         {
+             queen_BlackB->moveDiagonally(destination_posititon);
+             queen_BlackB->currentPosition = destination_posititon;
+             queen_BlackB->isAttacker(true);
+             return true;
+         }
+     }
 
-     if (queen_BlackB->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true)
+     if (queen_BlackB->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true && (turn % 2 != 0))
      {
          if (queen_BlackB->isLegal(destination_posititon) && (source_position.x - destination_posititon.x == 0 ||  source_position.y - destination_posititon.y == 0))
          {
@@ -174,7 +182,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
          }
      }
 
-     if (queen_WhiteW->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true)
+     if (queen_WhiteW->currentPosition == source_position && BishopPathObstructed(source_position, destination_posititon) != true && (turn % 2 == 0))
      {
          if (queen_WhiteW->isLegal(destination_posititon) && (abs(source_position.x - destination_posititon.x) == abs(source_position.y - destination_posititon.y)))
          {
@@ -185,7 +193,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
          }
      }
 
-     if (queen_WhiteW->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true)
+     if (queen_WhiteW->currentPosition == source_position && RookPathObstructed(source_position, destination_posititon) != true && (turn % 2 == 0))
      {
          if (queen_WhiteW->isLegal(destination_posititon) && (source_position.x - destination_posititon.x == 0 || source_position.y - destination_posititon.y == 0))
          {
@@ -197,13 +205,9 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
      }
 
 
-     
-
-
-
 
     //movment of king
-    else if (king_BlackB->currentPosition == source_position)
+    else if (king_BlackB->currentPosition == source_position && (turn % 2 != 0))
     {
         if (king_BlackB->isLegal(destination_posititon))
         {
@@ -214,7 +218,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
         }
     }
 
-    else if (king_WhiteW->currentPosition == source_position)
+    else if (king_WhiteW->currentPosition == source_position && (turn % 2 == 0))
     {
         if (king_WhiteW->isLegal(destination_posititon))
         {
@@ -227,86 +231,161 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
 
     
 
-
     //movement of pawn white
-    else if (pawn_White1->currentPosition == source_position)
-    {
-        if (pawn_White1->isLegal(destination_posititon))
-        {
-            pawn_White1->move(destination_posititon);
-            pawn_White1->currentPosition = destination_posititon;
-            pawn_White1->isAttacker(true);
-            return true;
-        }
+    else if (pawn_White1->currentPosition == source_position && (turn % 2 == 0))
+     {
+         if (pawn_White1->isLegal(destination_posititon))
+         {
+             pawn_White1->move(destination_posititon);
+             pawn_White1->currentPosition = destination_posititon;
+             pawn_White1->isAttacker(true);
+             return true;
+         }
+
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White1->move(destination_posititon);
+                 pawn_White1->currentPosition = destination_posititon;
+                 pawn_White1->isAttacker(true);
+                 return true;
+             }
+         }
     }
 
-    else if (pawn_White2->currentPosition == source_position)
+    else if (pawn_White2->currentPosition == source_position && (turn % 2 == 0))
     {
-        if (pawn_White2->isLegal(destination_posititon))
-        {
-            pawn_White2->move(destination_posititon);
-            pawn_White2->currentPosition = destination_posititon;
-            pawn_White2->isAttacker(true);
-            return true;
-        }
+         if (pawn_White2->isLegal(destination_posititon))
+         {
+             pawn_White2->move(destination_posititon);
+             pawn_White2->currentPosition = destination_posititon;
+             pawn_White2->isAttacker(true);
+             return true;
+         }
+
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White2->move(destination_posititon);
+                 pawn_White2->currentPosition = destination_posititon;
+                 pawn_White2->isAttacker(true);
+                 return true;
+             }
+         }
     }
 
-    else if (pawn_White3->currentPosition == source_position)
-    {
-        if (pawn_White3->isLegal(destination_posititon))
-        {
-            pawn_White3->move(destination_posititon);
-            pawn_White3->currentPosition = destination_posititon;
-            pawn_White3->isAttacker(true);
-            return true;
-        }
-    }
+    else if (pawn_White3->currentPosition == source_position && (turn % 2 == 0))
+     {
+         if (pawn_White3->isLegal(destination_posititon))
+         {
+             pawn_White3->move(destination_posititon);
+             pawn_White3->currentPosition = destination_posititon;
+             pawn_White3->isAttacker(true);
+             return true;
+         }
 
-    else if (pawn_White4->currentPosition == source_position)
-    {
-        if (pawn_White4->isLegal(destination_posititon))
-        {
-            pawn_White4->move(destination_posititon);
-            pawn_White4->currentPosition = destination_posititon;
-            pawn_White4->isAttacker(true);
-            return true;
-        }
-    }
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White3->move(destination_posititon);
+                 pawn_White3->currentPosition = destination_posititon;
+                 pawn_White3->isAttacker(true);
+                 return true;
+             }
+         }
+     }
 
-    else if (pawn_White5->currentPosition == source_position)
-    {
-        if (pawn_White5->isLegal(destination_posititon))
-        {
-            pawn_White5->move(destination_posititon);
-            pawn_White5->currentPosition = destination_posititon;
-            pawn_White5->isAttacker(true);
-            return true;
-        }
-    }
+    else if (pawn_White4->currentPosition == source_position && (turn % 2 == 0))
+     {
+         if (pawn_White4->isLegal(destination_posititon))
+         {
+             pawn_White4->move(destination_posititon);
+             pawn_White4->currentPosition = destination_posititon;
+             pawn_White4->isAttacker(true);
+             return true;
+         }
 
-    else if (pawn_White6->currentPosition == source_position)
-    {
-        if (pawn_White6->isLegal(destination_posititon))
-        {
-            pawn_White6->move(destination_posititon);
-            pawn_White6->currentPosition = destination_posititon;
-            pawn_White6->isAttacker(true);
-            return true;
-        }
-    }
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White4->move(destination_posititon);
+                 pawn_White4->currentPosition = destination_posititon;
+                 pawn_White4->isAttacker(true);
+                 return true;
+             }
+         }
+     }
 
-    else if (pawn_White7->currentPosition == source_position)
-    {
-        if (pawn_White7->isLegal(destination_posititon))
-        {
-            pawn_White7->move(destination_posititon);
-            pawn_White7->currentPosition = destination_posititon;
-            pawn_White7->isAttacker(true);
-            return true;
-        }
-    }
+    else if (pawn_White5->currentPosition == source_position && (turn % 2 == 0))
+     {
+         if (pawn_White5->isLegal(destination_posititon))
+         {
+             pawn_White5->move(destination_posititon);
+             pawn_White5->currentPosition = destination_posititon;
+             pawn_White5->isAttacker(true);
+             return true;
+         }
 
-    else if (pawn_White8->currentPosition == source_position)
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White5->move(destination_posititon);
+                 pawn_White5->currentPosition = destination_posititon;
+                 pawn_White5->isAttacker(true);
+                 return true;
+             }
+         }
+     }
+
+    else if (pawn_White6->currentPosition == source_position && (turn % 2 == 0))
+     {
+         if (pawn_White6->isLegal(destination_posititon))
+         {
+             pawn_White6->move(destination_posititon);
+             pawn_White6->currentPosition = destination_posititon;
+             pawn_White6->isAttacker(true);
+             return true;
+         }
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White6->move(destination_posititon);
+                 pawn_White6->currentPosition = destination_posititon;
+                 pawn_White6->isAttacker(true);
+                 return true;
+             }
+         }
+     }
+
+    else if (pawn_White7->currentPosition == source_position && (turn % 2 == 0))
+     {
+         if (pawn_White7->isLegal(destination_posititon))
+         {
+             pawn_White7->move(destination_posititon);
+             pawn_White7->currentPosition = destination_posititon;
+             pawn_White7->isAttacker(true);
+             return true;
+         }
+
+         for (sf::Vector2f select : pieces_currentPosition)
+         {
+             if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+             {
+                 pawn_White7->move(destination_posititon);
+                 pawn_White7->currentPosition = destination_posititon;
+                 pawn_White7->isAttacker(true);
+                 return true;
+             }
+         }
+     }
+
+    else if (pawn_White8->currentPosition == source_position && (turn % 2 == 0))
     {
         if (pawn_White8->isLegal(destination_posititon))
         {
@@ -315,15 +394,21 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_White8->isAttacker(true);
             return true;
         }
+
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_White8->move(destination_posititon);
+                pawn_White8->currentPosition = destination_posititon;
+                pawn_White8->isAttacker(true);
+                return true;
+            }
+        }
     }
 
-
-
-
-
-
     //movment of pawn black
-    else if (pawn_Black1->currentPosition == source_position)
+    else if (pawn_Black1->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black1->isLegal(destination_posititon))
         {
@@ -332,9 +417,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black1->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black2->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black1->move(destination_posititon);
+                pawn_Black1->currentPosition = destination_posititon;
+                pawn_Black1->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black2->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black2->isLegal(destination_posititon))
         {
@@ -343,9 +439,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black2->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black3->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black2->move(destination_posititon);
+                pawn_Black2->currentPosition = destination_posititon;
+                pawn_Black2->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black3->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black3->isLegal(destination_posititon))
         {
@@ -354,9 +461,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black3->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black4->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black3->move(destination_posititon);
+                pawn_Black3->currentPosition = destination_posititon;
+                pawn_Black3->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black4->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black4->isLegal(destination_posititon))
         {
@@ -366,9 +484,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black4->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black5->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black4->move(destination_posititon);
+                pawn_Black4->currentPosition = destination_posititon;
+                pawn_Black4->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black5->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black5->isLegal(destination_posititon))
         {
@@ -377,9 +506,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black5->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black6->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black5->move(destination_posititon);
+                pawn_Black5->currentPosition = destination_posititon;
+                pawn_Black5->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black6->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black6->isLegal(destination_posititon))
         {
@@ -388,9 +528,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black6->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black7->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black6->move(destination_posititon);
+                pawn_Black6->currentPosition = destination_posititon;
+                pawn_Black6->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black7->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black7->isLegal(destination_posititon))
         {
@@ -399,9 +550,20 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black7->isAttacker(true);
             return true;
         }
-    }
 
-    else if (pawn_Black8->currentPosition == source_position)
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black7->move(destination_posititon);
+                pawn_Black7->currentPosition = destination_posititon;
+                pawn_Black7->isAttacker(true);
+                return true;
+            }
+        }
+    }
+                                                             
+    else if (pawn_Black8->currentPosition == source_position && (turn % 2 != 0))
     {
         if (pawn_Black8->isLegal(destination_posititon))
         {
@@ -409,6 +571,17 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
             pawn_Black8->currentPosition = destination_posititon;
             pawn_Black8->isAttacker(true);
             return true;
+        }
+
+        for (sf::Vector2f select : pieces_currentPosition)
+        {
+            if (abs(destination_posititon.x - selectionPosition.x) == abs(destination_posititon.y - selectionPosition.y) && (destination_posititon == select))
+            {
+                pawn_Black8->move(destination_posititon);
+                pawn_Black8->currentPosition = destination_posititon;
+                pawn_Black8->isAttacker(true);
+                return true;
+            }
         }
     }
 
@@ -425,6 +598,7 @@ bool  Game::MovePiece(sf::Vector2f source_position, sf::Vector2f destination_pos
 //POLL EVENTS
 void Game::pollEvent()
 {
+    
     while (window->pollEvent(event))
     {
         switch (event.type)
@@ -447,13 +621,8 @@ void Game::pollEvent()
                 if (isSelected == false) { isMovingSetter(false); }
 
 
-
-
-
                 //SELECT A DESIRED PIECE
                 sf::Vector2i localMousePos = sf::Mouse::getPosition(*window);
-
-
 
 
                 //SELECT THE PIECE
@@ -478,9 +647,6 @@ void Game::pollEvent()
 
 
 
-
-
-
                 //SELECT THE DESTINATION FOR THE PIECES
                 else if (event.mouseButton.button == sf::Mouse::Left && isSelected == true && isMoving == true)
                 {
@@ -491,13 +657,11 @@ void Game::pollEvent()
                     destinationPosition.y = select.y - (int(select.y) % 100);
                     std::cout << "::PIECE PLACED::" << std::endl;
 
-                    //reseting the value of 'isSelect' and 'isMoving'
 
                     //move the piece if there is no same piece collision
                     bool pieceMoved = false;
                     if(!samePieceCollision(selectionPosition, destinationPosition))
                         pieceMoved= MovePiece(selectionPosition, destinationPosition);
-
 
                     //this updates the current position of the selected piece, so that the capture mechanism can funciton properly
                     this->update();
@@ -521,6 +685,10 @@ void Game::pollEvent()
                             }
                         }
                     }
+
+                    if (pieceMoved == true && selectionPosition != destinationPosition)
+                        turnCounter();
+                        
 
 
                     isSelectedSetter(false);

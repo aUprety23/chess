@@ -1,3 +1,37 @@
-﻿  pollingEvent.cpp
-C:\Users\abhis\source\repos\Test_Project\Test_Project\pollingEvent.cpp(420): warning C4715: 'Game::MovePiece': not all control paths return a value
+﻿  Bishop.cpp
+  Game.cpp
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(108,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(109,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(137,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(138,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(391,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\abhis\source\repos\Test_Project\Test_Project\Game.cpp(391,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Main.cpp
+  pollingEvent.cpp
+  Generating Code...
+C:\Users\abhis\source\repos\Test_Project\Test_Project\pollingEvent.cpp(593): warning C4715: 'Game::MovePiece': not all control paths return a value
   Test_Project.vcxproj -> C:\Users\abhis\source\repos\Test_Project\x64\Debug\Test_Project.exe

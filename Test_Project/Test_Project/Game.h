@@ -99,7 +99,6 @@ class Game
 	Pawn* pawn_Black6;
 	Pawn* pawn_Black7;
 	Pawn* pawn_Black8;
-
 	void initPawn();
 
 
@@ -114,11 +113,14 @@ class Game
 	std::vector<sf::RectangleShape> rectanglesCollected;
 	void initRectanglesCollected();
 
+	int turn;
 
 public:
 	//CONSTRUCTORS AND DESTRUCTORS
 	Game();
 	virtual ~Game();
+
+	int turnCounter();
 
 
 	//CHECK IF WINDOW IS RUNNING
@@ -143,9 +145,8 @@ public:
 	bool BishopPathObstructed(sf::Vector2f current_Position, sf::Vector2f destination_Position);
 	bool RookPathObstructed(sf::Vector2f current_Position, sf::Vector2f destination_Position);
 
+	//check if there is collision between pieces of same color
 	bool samePieceCollision(sf::Vector2f selection_Position, sf::Vector2f destination_Position);
-
-	void Capture();
 
 	//draw board
 	void drawBoard();

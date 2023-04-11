@@ -5,6 +5,7 @@
 void Game::initVariables()
 {
      this->window = nullptr;
+     turn = 0;
 }
 
 //INITIALIZE GAME WINDOW
@@ -150,9 +151,7 @@ bool Game::RookPathObstructed(sf::Vector2f current_Position, sf::Vector2f destin
     return false;
 }
 
-void Game::Capture()
-{
-}
+
 
 bool Game::samePieceCollision(sf::Vector2f selection_Position, sf::Vector2f destination_Position)
 {
@@ -171,6 +170,11 @@ bool Game::samePieceCollision(sf::Vector2f selection_Position, sf::Vector2f dest
     return false;
 }
 
+int Game::turnCounter()
+{
+    turn++;
+    return turn;
+}
 
 //VECTOR TO STORE ALL THE PIECES
 void Game::initPiecesList()
@@ -399,8 +403,6 @@ void Game::initBoard()
 }
 
 
-
-
 //draw the board
 void Game::drawBoard()
 {
@@ -519,7 +521,6 @@ void Game::render()
     pawn_Black6->renderPawn(*window);
     pawn_Black7->renderPawn(*window);
     pawn_Black8->renderPawn(*window);
-
 
 
     window->display();

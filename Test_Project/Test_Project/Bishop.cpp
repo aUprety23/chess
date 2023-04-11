@@ -99,7 +99,7 @@ void Bishop::updateBishop()
 }
 
 //RENDER BISHOP
-void Bishop::renderBishop(sf::RenderTarget& target)
+void Bishop::renderBishop(sf::RenderWindow& target)
 {
 	target.draw(rectangle);
 }
